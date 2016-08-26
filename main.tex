@@ -1,0 +1,81 @@
+\documentclass[11pt, a4paper, english, twoside]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{mathtools} %for \coloneqq
+\usepackage{faktor}
+\usepackage{tikz-cd} 
+%bibliography
+\usepackage[noadjust]{cite}
+\usepackage{hyperref}
+\usepackage{enumitem}
+%font
+%\usepackage[euler-digits, euler-hat-accent]{eulervm}
+%\usepackage{newpxtext}
+%\usepackage{charter}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{acks}{Acknowledgments}
+
+\begin{document}
+%ASSUMPTIONS:
+%basic algebraic terms like: ring, field, polynomial, algebraic closure, ideals,...
+
+These notes try to give a overview over the various formulations of Hilberts Nullstellensatz, some important applications and different proofs and proof-ideas.
+One way to approach the Nullstellensatz, as explained in Taos blogpost \textbf{TODO: cite}, is by studying obstructions to solving a set of simultaneous polyonomial equations over a algebraically closed field $k$.
+Say we are given equations of the form $f_1(x) = f_2(x) = \dots = f_l(x) = 0$ with $x = (x_1, \dots, x_n) \in k^n$. If we find polynomials $g_1, \dots, g_l$ such that $f_1g_1 + \dots + f_lg_l = 1$ this equation cannot have a
+solution. The weak form of Hilberts Nullstellensatz states that (over algebraically closed fields) this is in fact the only obstruction.
+
+\begin{theorem}[Nullstellensatz, weak form]
+    Let $k$ be an algebraically closed field, $f_1,\dots,f_l \in k[x_1,\dots,x_n]$ polyonmials in $n$ variables, then exactly one of the following statements holds:
+    \begin{enumerate}
+        \item The system of equations $f_1(x) = \dots =f_l(x) = 0$ has a solution $x \in k^n$.
+        \item There exist $g_1, \dots, g_l \in k[x_1,\dots,x_n]$ such that $f_1g_1 + \dots + f_lg_l = 1$
+    \end{enumerate}
+\end{theorem}
+The way this is used most often, is to conclude the existence of a relation as in the second statement purely from the fact that the $f_i$ admit no simoultaneous zero.
+We can restate this in a more algebro-geometric fashion to see a first glimpse of how the Nullstellensatz provides a dictionary between the algebraic and the geometric world. For this we introduce the notion of a 
+(classical) affine variety.
+
+\begin{definition}
+    Let $k$ be an algebraically closed field and $f_\alpha \in k[x_1,\dots,x_n]$ a collection of polynomials. The \emph{zero set} of the $\{f_\alpha\}$ is defined as
+    \[
+        Z({f_\alpha}) \coloneqq \{ x \in k^n \,| f_\alpha(x) = 0) \} \subset k^n
+    \]
+    Any subset of $k^n$ that is the zero set of some polynomials is called an \emph{affine variety}.
+    Given an affine variety $X \subset k^n$ we define its associated ideal as
+    \[ 
+        I(X) \coloneqq \{f \in k[x_1,\dots,x_n] | f(x) = 0 \text{for all} x \in X \},
+    \]
+    and its coordinate ring as
+    \[
+        A(X) \coloneqq k[x_1,\dots,x_n]/I(X).
+    \]
+\end{definition}
+
+\begin{remark}
+    $I(X)$ is in fact an ideal: if two polynomials $f$ and $g$ vanish at some point $x$, $f+g$ vanishes as well as $hf$ for some arbitrary polynomial $h$.
+    Also, for some ideal $\mathfrak{a} \subset k[x_1,\dots,x_n]$, we clearly have
+    \[
+        \mathfrak{a} \subset I(Z(\mathfrak{a}))
+    \]
+\end{remark}
+
+With these definitions at hand, the reformulated weak Nullstellensatz reads as follows.
+
+\begin{theorem}[weak Nullstellensatz, second formulation]
+    Let $k$ be an algebraically closed field, $mathfrak{a} \in k[x_1,\dots,x_n]$ an ideal, then $Z(\mathfrak{a}) = \emptyset$ if and only if $\mathfrak{a}$ is all of $k[x_1,\dots,x_n]$
+\end{theorem}
+
+
+
+\end{document}
